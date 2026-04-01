@@ -43,8 +43,8 @@ CLASS_NAMES = [
 @st.cache_resource
 def load_cnn_model():
     try:
-        # Pastikan file .h5 ada satu folder dengan app.py
-        model = tf.keras.models.load_model('model_agroscan.h5')
+        # Memuat model format .keras yang lebih modern dan stabil
+        model = tf.keras.models.load_model('model_agroscan.keras')
         return model
     except Exception as e:
         st.error(f"Gagal memuat model CNN: {e}")
@@ -113,7 +113,7 @@ with st.sidebar:
     if cnn_model:
         st.success("✅ Model Utama (CNN) Siap")
     else:
-        st.error("❌ Model .h5 Hilang!")
+        st.error("❌ Model .keras Hilang!")
     st.info(f"🤖 Model Sekunder: {api_status}")
 
     st.markdown("---")
